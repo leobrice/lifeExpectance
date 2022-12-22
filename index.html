@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form action="" method="">
+  <table class="styled-table" border=2>
+    <tr>
+          <td>Enter year expentance</td>
+          <td><input type="number" name="" id="user_expentance" min="18" max="100" required></td>
+    </tr>
+  </table>
+<table border="1" class="styled-table">
+<thead>
+  <th>Activity</th>
+  <th>Hours</th>
+  <th>Year</th>
+</thead>
+<tbody>
+ 
+  <tr>
+    <td>Sleeping </td>
+    <td><input type="number" id="sleeping" aria-describedby="" name="sleeping" namespace="1" min="0" max="24" required></td>
+    <td><input type="text" id="sleeping1" aria-describedby="" name="sleeping" readonly="readonly"> </td>
+  </tr>
+
+   <tr>
+    <td>Eating</td>
+    <td><input type="number" id="eating" aria-describedby="" name="eating" min="0" max="24" required></td>
+    <td><input type="text" id="eating1" aria-describedby="" name="eating" readonly="readonly"></td>
+  </tr>
+  <tr>
+    <td >Bathing </td>
+    <td>
+      <input type="number" id="bathing" aria-describedby="" name="bathing" min="0" max="24" required>
+    </td>
+    <td><input type="text" id="bathing1" aria-describedby="" name="bathing" readonly="readonly">
+    </td>
+  </tr>
+  <tr>
+    <td>Socal Media </td>
+    <td><input type="number" id="media" aria-describedby="" name="Media" min="0" max="24" required></td>
+    <td><input type="text" id="media1" aria-describedby="" name="Media" readonly="readonly"></td>
+  </tr>
+  <tr>
+    <td>School </td>
+    <td>
+      <select name="" id="userOption">
+        <option value="0">How many years did you attend to school</option>
+        <option value="1">1 years</option>
+        <option value="2">2 years</option>
+        <option value="3">3 years</option>
+        <option value="4">4 years</option>
+        <option value="8">8 years</option>
+        <option value="5">5 years</option>
+        <option value="6">6 years</option>
+        <option value="7">7 years</option>
+        <option value="8">8 years</option>
+        <option value="9">9 years</option>
+        <option value="10">10 years</option>
+        <option value="11">11 years</option>
+        <option value="12">12 years</option>
+        <option value="13">13 years</option>
+        <option value="14">14 years</option>
+        <option value="15">15 years</option>
+        <option value="16">16 years</option>
+        <option value="17">17 years</option>
+        <option value="18">18 years</option>
+        <option value="19">19 years</option>
+        <option value="20">20 years</option>
+      </select>
+    </td>
+    <td>
+      <input type="text" id="school1" aria-describedby="" name="school" readonly="readonly"></td>
+  </tr>
+  <tr>
+    <td>Saloon </td>
+    <td><input type="number" id="saloon" aria-describedby="" name="saloon" min="0" max="24" required></td>
+    <td><input type="text" id="saloon1" aria-describedby="" name="saloon" readonly="readonly"></td>
+  </tr>
+  <tr>
+    <td>Church/Mosque </td>
+    <td><input type="number" id="church" aria-describedby="" name="Church" min="0" max="24" required></td>
+    <td><input type="text" id="church1" aria-describedby="" name="Church" readonly="readonly"></td>
+  </tr>
+  <tr>
+    <td>Transport</td>
+    <td><input type="number" id="transport" aria-describedby="" name="transport" min="0" max="24" required></td>
+    <td><input type="text" id="transport1" aria-describedby="" name="transport" readonly="readonly"></td>
+  </tr>
+   <tr>
+    <td>Employment</td>
+    <td><input type="number" id="employment" aria-describedby="" name="Employment" min="0" max="24" required></td>
+    <td><input type="text" id="employment1" aria-describedby="" name="Employment" readonly="readonly"></td>
+  </tr>
+</tbody>
+</table >
+<button onclick="myFunction()" class="button">Check</button>
+
+<button onclick="myFunctionReset()"  id="myFunctionReset"class="button1">Reset</button>
+</form>
+<div id="hide">
+<table class="styled-table" border=2>
+  <tr >
+      <td>Total Years</td>
+      <td><input type="number" name="" readonly="readonly" id="totalYears"></td>
+  </tr>
+  <tr id="activeYearsCol" >
+      <td>Active Years</td>
+      <td><input type="number" name="" readonly="readonly" id="activeYears"></td>
+  </tr>
+</table>
+</div>
+<script>
+          //hiding total years and Active Years table before clicking Check
+          document.getElementById("hide").style.visibility="hidden";
+
+          document.getElementById("myFunctionReset").reset();
+         
+        function myFunction(){  
+                //showing the results table after button clicked
+                document.getElementById("hide").style.visibility="visible";
+
+
+
+          //once in a year
+          const one_day_in_every_week_in_year = 48;
+          
+          const days_of_year = 365;
+          const hours_of_one_year = 8760;
+          const user_expentance = document.getElementById("user_expentance").value;
+          document.addEventListener("submit",function(e) {  
+            e.preventDefault();
+
+                 //School
+              var school=document.getElementById("userOption");
+              var user =school.value;
+              let schoolConvertInput = parseInt(user);
+               var school1=document.getElementById("school1").value=schoolConvertInput ;
+               const startAge=school1;
+
+
+            //sleeping
+          var sleep=document.getElementById("sleeping").value;
+  
+          
+            let sleep_ConvertInput = parseInt(sleep);
+            //hii sleeping_value ni kwaajili ya kufanya mahesabu ya all input hours isizidi masaa 24  
+              var sleeping_year=(((sleep_ConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+              var sleep2=Math.floor(sleeping_year);
+               let sleep1 = document.querySelector("#sleeping1").value=sleep2;
+             
+              // ((B5*365)*(B2-E8))/8760
+           
+              //Eating
+            var eat=document.getElementById("eating").value;
+            let eat_ConvertInput = parseInt(eat);
+              var eating_year=(((eat_ConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+              var eat2=Math.floor(eating_year);
+              let eat1=document.getElementById("eating1").value=eat2;
+            
+           
+            // =((B6*365)*(B2-E8))/8760
+
+            // //Bathing
+            var bath=document.getElementById("bathing").value;
+            let bath_ConvertInput = parseInt(bath);
+            var bath_year=(((bath_ConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+            var bath2=Math.floor(bath_year);
+            let bath1 =document.getElementById("bathing1").value=bath2;
+            
+               // =((B7*365)*(B2-E8))/8760
+
+            //   //Social Media
+            var media=document.getElementById("media").value;
+            let socialConvertInput = parseInt(media);
+            var socialMedia=(((socialConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+            var socialMedia1=Math.floor(socialMedia);
+            let media1=document.getElementById("media1").value=socialMedia1;
+          
+               //=((B8*365)*(B2-E8))/8760
+
+             
+                //Saloon
+                
+                var saloon=document.getElementById("saloon").value;
+                let saloonConvertInput = parseInt(saloon);
+                var sln=(((saloonConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+                var saloon2=Math.floor(sln);
+                var saloon1=document.getElementById("saloon1").value=saloon2;
+
+
+                //church
+               
+                // let day_of_week = one_day_in_every_week_in_year;
+                var church=document.getElementById("church").value;
+                let churchConvertInput = parseInt(church);
+                var church_year=(((churchConvertInput*one_day_in_every_week_in_year )*(user_expentance-startAge))/hours_of_one_year);
+                var church2=Math.floor(church_year);
+                var church1=document.getElementById("church1").value=church2;
+                // =((B8*365)*(B2-E8))/8760
+
+                //Transport
+                var transport=document.getElementById("transport").value;
+                let transportConvertInput = parseInt(transport);
+                var transportYear=(((transportConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+                var transport2=Math.floor(transportYear);
+                var transport=document.getElementById("transport1").value=transport2; 
+
+                //Employment
+                var emp=document.getElementById("employment").value;
+                let employmentConvertInput = parseInt(emp);
+                let con = Math.floor(employmentConvertInput);
+                var employmentYear=(((employmentConvertInput*days_of_year)*(user_expentance-startAge))/hours_of_one_year);
+                var employed1=Math.floor(employmentYear);
+                var employed=document.getElementById("employment1").value=employed1;
+
+                let totalhours = (employmentConvertInput + transportConvertInput + eat_ConvertInput
+                + churchConvertInput +  saloonConvertInput + socialConvertInput + bath_ConvertInput + sleep_ConvertInput);
+
+                if(totalhours <= 24){
+                  var totalYears=(transport + employed + church1 + saloon1 + school1 + media1 + bath1 + eat1 + sleep1);
+                  console.log(totalYears);
+                    var remainingYears=user_expentance-totalYears;
+                    document.getElementById("totalYears").value=totalYears;
+                    document.getElementById("activeYears").value=remainingYears;
+                    if (remainingYears>1) {
+                      document.getElementById("activeYearsCol").style.background="#009879";
+                      document.getElementById("activeYears").style.color="black";
+                      
+                    } else {
+                      // document.getElementById("activeYears").style.backgroundColor="red";
+                      
+                    }
+                }
+                else{
+                  alert(totalhours + " is exceed the the 24hr");
+                };
+                 
+
+
+        });
+        };
+</script>
+    
+</body>
+</html>
